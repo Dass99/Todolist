@@ -16,10 +16,10 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/")
-    public ResponseEntity create(@RequestBody UserModel userModel){
+    public ResponseEntity<?> create(@RequestBody UserModel userModel) {
         var user = userRepository.findByUsername(userModel.getUsername());
-        if (user !=null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário ja existe");
+        if (user != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exist");
         }
         var passwdHashred = BCrypt.withDefaults().hashToString(12, userModel.getPassword().toCharArray());
         userModel.setPassword(passwdHashred);
