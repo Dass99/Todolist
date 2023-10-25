@@ -56,8 +56,8 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody TaskModel taskModel,@PathVariable UUID id,
-            HttpServletRequest request) 
-            
+            HttpServletRequest request)
+
     {
         TaskModel task = tasksRepository.findById(id).orElse(null);
 
