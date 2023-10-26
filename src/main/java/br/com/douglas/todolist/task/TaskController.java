@@ -50,8 +50,7 @@ public class TaskController {
     @GetMapping("/")
     public List<TaskModel> list(HttpServletRequest request) {
         UUID idUser = (UUID) (request.getAttribute("idUser"));
-        List<TaskModel> tasks = tasksRepository.findByIdUser(idUser);
-        return tasks;
+        return tasksRepository.findByIdUser(idUser);
     }
 
     @PutMapping("/{id}")
